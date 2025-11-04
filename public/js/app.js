@@ -38,13 +38,29 @@ function setupEventListeners() {
     }
     
     // Navigation items
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.nav-link');
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
             const page = this.getAttribute('data-page');
             navigateToPage(page);
         });
     });
+    
+    // Card links
+    const cardLinks = document.querySelectorAll('.card-link');
+    cardLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.getAttribute('data-page');
+            if (page) {
+                navigateToPage(page);
+            }
+        });
+    });
+    
+    // Update current date
+    updateCurrentDate();
     
     // Filter and search
     const statusFilter = document.getElementById('statusFilter');
@@ -106,7 +122,7 @@ function showDashboard() {
 
 function navigateToPage(pageName) {
     // Update nav active state
-    document.querySelectorAll('.nav-item').forEach(item => {
+    document.querySelectorAll('.nav-link').forEach(item => {
         item.classList.remove('active');
         if (item.getAttribute('data-page') === pageName) {
             item.classList.add('active');
@@ -125,12 +141,35 @@ function navigateToPage(pageName) {
     
     // Update page title
     const pageTitle = document.getElementById('pageTitle');
+    const breadcrumbPage = document.getElementById('breadcrumbPage');
+    const pageTitles = {
+        'dashboard': 'Overview',
+        'applications': 'Applications',
+        'students': 'Students',
+        'companies': 'Companies',
+        'reports': 'Reports',
+        'settings': 'Settings'
+    };
+    
     if (pageTitle) {
-        pageTitle.textContent = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+        pageTitle.textContent = pageTitles[pageName] || pageName.charAt(0).toUpperCase() + pageName.slice(1);
+    }
+    
+    if (breadcrumbPage) {
+        breadcrumbPage.textContent = pageTitles[pageName] || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     }
     
     // Load page data
     loadPageData(pageName);
+}
+
+function updateCurrentDate() {
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        const currentDate = new Date().toLocaleDateString('en-US', options);
+        dateElement.textContent = currentDate;
+    }
 }
 
 function loadDashboardData() {
