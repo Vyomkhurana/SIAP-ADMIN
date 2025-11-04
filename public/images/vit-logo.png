@@ -1,0 +1,6 @@
+<!-- Placeholder for VIT Logo -->
+<!-- Replace this file with actual VIT logo image -->
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#F5B800"/>
+  <text x="60" y="70" font-family="Arial" font-size="24" font-weight="bold" fill="#003366" text-anchor="middle">VIT</text>
+</svg>

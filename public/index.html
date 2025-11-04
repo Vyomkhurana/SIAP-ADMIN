@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAP Admin - VIT Vellore</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="/images/vit-logo.png" alt="VIT Logo" class="vit-logo">
+                <h1>Summer Internship Application Portal</h1>
+                <h2>Admin Panel - Career Development Centre</h2>
+            </div>
+            <div class="login-box">
+                <h3>Admin Login</h3>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="admin@vit.ac.in">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="login-help">Contact CDC for login credentials</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="/images/vit-logo.png" alt="VIT Logo" class="sidebar-logo">
+                <h3>SIAP Admin</h3>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="applications">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Applications</span>
+                </li>
+                <li class="nav-item" data-page="students">
+                    <i class="fas fa-users"></i>
+                    <span>Students</span>
+                </li>
+                <li class="nav-item" data-page="companies">
+                    <i class="fas fa-building"></i>
+                    <span>Companies</span>
+                </li>
+                <li class="nav-item" data-page="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </li>
+                <li class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h2 id="pageTitle">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Admin CDC</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Dashboard Content -->
+                <div id="dashboardContent" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Applications</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Approved</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Pending</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Rejected</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-applications">
+                        <h3>Recent Applications</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Registration No.</th>
+                                    <th>Company</th>
+                                    <th>Applied Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentApplicationsTable">
+                                <tr>
+                                    <td colspan="6" class="no-data">No applications yet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Applications Content -->
+                <div id="applicationsContent" class="content-section">
+                    <div class="section-header">
+                        <h3>All Applications</h3>
+                        <div class="filters">
+                            <select id="statusFilter" class="filter-select">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                            <input type="text" id="searchApplications" class="search-input" placeholder="Search applications...">
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Student Name</th>
+                                <th>Registration No.</th>
+                                <th>Email</th>
+                                <th>Company</th>
+                                <th>Applied Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsTable">
+                            <tr>
+                                <td colspan="8" class="no-data">No applications found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Students Content -->
+                <div id="studentsContent" class="content-section">
+                    <div class="section-header">
+                        <h3>Students</h3>
+                        <input type="text" id="searchStudents" class="search-input" placeholder="Search students...">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Registration No.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Program</th>
+                                <th>Year</th>
+                                <th>Applications</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTable">
+                            <tr>
+                                <td colspan="7" class="no-data">No students found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Companies Content -->
+                <div id="companiesContent" class="content-section">
+                    <div class="section-header">
+                        <h3>Companies</h3>
+                        <button class="btn btn-primary" id="addCompanyBtn">
+                            <i class="fas fa-plus"></i> Add Company
+                        </button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Industry</th>
+                                <th>Location</th>
+                                <th>Positions Available</th>
+                                <th>Applications</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="companiesTable">
+                            <tr>
+                                <td colspan="6" class="no-data">No companies found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reports Content -->
+                <div id="reportsContent" class="content-section">
+                    <h3>Reports & Analytics</h3>
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <h4>Application Statistics</h4>
+                            <button class="btn btn-secondary">Generate Report</button>
+                        </div>
+                        <div class="report-card">
+                            <h4>Student Placement Report</h4>
+                            <button class="btn btn-secondary">Generate Report</button>
+                        </div>
+                        <div class="report-card">
+                            <h4>Company-wise Report</h4>
+                            <button class="btn btn-secondary">Generate Report</button>
+                        </div>
+                        <div class="report-card">
+                            <h4>Monthly Summary</h4>
+                            <button class="btn btn-secondary">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Content -->
+                <div id="settingsContent" class="content-section">
+                    <h3>Settings</h3>
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <h4>Portal Configuration</h4>
+                            <div class="form-group">
+                                <label>Application Deadline</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Portal Status</label>
+                                <select class="form-control">
+                                    <option>Open</option>
+                                    <option>Closed</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary">Save Settings</button>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Admin Account</h4>
+                            <div class="form-group">
+                                <label>Change Password</label>
+                                <input type="password" class="form-control" placeholder="New Password">
+                            </div>
+                            <button class="btn btn-primary">Update Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
