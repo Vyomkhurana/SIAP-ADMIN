@@ -542,6 +542,124 @@
         </main>
     </div>
 
+    <!-- Add Company Modal -->
+    <div id="addCompanyModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Company</h2>
+                <button class="modal-close" id="closeCompanyModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addCompanyForm" class="modal-body">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="companyName">Company Name *</label>
+                        <input type="text" id="companyName" name="companyName" required placeholder="Enter company name">
+                    </div>
+                    <div class="form-field">
+                        <label for="companyIndustry">Industry *</label>
+                        <select id="companyIndustry" name="companyIndustry" required>
+                            <option value="">Select industry</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="Finance">Finance & Banking</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Consulting">Consulting</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Automobile">Automobile</option>
+                            <option value="Telecommunications">Telecommunications</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="companyLocation">Location *</label>
+                        <input type="text" id="companyLocation" name="companyLocation" required placeholder="City, State/Country">
+                    </div>
+                    <div class="form-field">
+                        <label for="companyWebsite">Website</label>
+                        <input type="url" id="companyWebsite" name="companyWebsite" placeholder="https://www.company.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="contactPerson">Contact Person *</label>
+                        <input type="text" id="contactPerson" name="contactPerson" required placeholder="Full name">
+                    </div>
+                    <div class="form-field">
+                        <label for="contactEmail">Contact Email *</label>
+                        <input type="email" id="contactEmail" name="contactEmail" required placeholder="contact@company.com">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="contactPhone">Contact Phone *</label>
+                        <input type="tel" id="contactPhone" name="contactPhone" required placeholder="+91 XXXXXXXXXX">
+                    </div>
+                    <div class="form-field">
+                        <label for="positionsAvailable">Positions Available *</label>
+                        <input type="number" id="positionsAvailable" name="positionsAvailable" required min="1" placeholder="Number of positions">
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="jobRoles">Job Roles *</label>
+                    <input type="text" id="jobRoles" name="jobRoles" required placeholder="E.g., Software Engineer, Data Analyst (comma-separated)">
+                </div>
+                
+                <div class="form-field">
+                    <label for="stipend">Stipend Range *</label>
+                    <div class="input-group">
+                        <input type="number" id="stipendMin" name="stipendMin" required placeholder="Min" min="0">
+                        <span class="input-separator">to</span>
+                        <input type="number" id="stipendMax" name="stipendMax" required placeholder="Max" min="0">
+                        <span class="input-suffix">₹ per month</span>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="duration">Internship Duration *</label>
+                    <select id="duration" name="duration" required>
+                        <option value="">Select duration</option>
+                        <option value="1-2">1-2 months</option>
+                        <option value="2-3">2-3 months</option>
+                        <option value="3-6">3-6 months</option>
+                        <option value="6+">6+ months</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label for="requirements">Requirements & Qualifications</label>
+                    <textarea id="requirements" name="requirements" rows="4" placeholder="Enter required skills, qualifications, and other requirements..."></textarea>
+                </div>
+                
+                <div class="form-field">
+                    <label for="description">Company Description</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Brief description about the company..."></textarea>
+                </div>
+                
+                <div class="form-field">
+                    <label for="applicationDeadline">Application Deadline *</label>
+                    <input type="date" id="applicationDeadline" name="applicationDeadline" required>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="cancelCompanyForm">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-check"></i>
+                        Add Company
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="/js/app.js"></script>
 </body>
 </html>
