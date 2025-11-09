@@ -3,18 +3,15 @@ const router = express.Router();
 
 // API Routes will be added here when we work on backend
 
-// Test route
 router.get('/test', (req, res) => {
   res.json({ 
-    message: 'API Routes working',
+    message: 'SIAP Admin API is working!',
     timestamp: new Date().toISOString()
   });
 });
 
-// Future routes structure:
-// router.use('/auth', require('./auth'));
-// router.use('/applications', require('./applications'));
-// router.use('/students', require('./students'));
-// router.use('/companies', require('./companies'));
+router.use('/companies', require('./companyRoutes'));
+router.use('/students', require('./studentRoutes'));
+router.use('/applications', require('./applicationRoutes'));
 
 module.exports = router;
